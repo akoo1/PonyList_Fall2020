@@ -1,0 +1,68 @@
+.Login-page {
+    background: var(--smu-blue);
+    width: 100%;
+    height: 100vh;
+}
+
+.Login {
+    position: fixed;
+    width: 300px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px; /* Negative half of height. */
+    margin-left: -150px; /* Negative half of width. */
+
+    background: var(--smu-red);
+    border: 0.5rem solid #000;
+    border-radius: 2rem;
+    z-index: 3;
+}
+
+.Login > h2 {
+    color: #fff;
+    text-align: center;
+}
+
+.Login > .icon {
+    color: var(--smu-blue);
+}
+
+.Login > .icon:hover {
+    cursor: pointer;
+}
+
+.Login label {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: left;
+}
+
+.Login button {
+    background: var(--smu-blue);
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .Login {
+        position: fixed;
+        width: 400px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px; /* Negative half of height. */
+        margin-left: -200px; /* Negative half of width. */
+    }
+}
+/* lg screens */
+@media (min-width: 992px) {
+    .Login {
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px; /* Negative half of height. */
+        margin-left: -300px; /* Negative half of width. */
+    }
+}

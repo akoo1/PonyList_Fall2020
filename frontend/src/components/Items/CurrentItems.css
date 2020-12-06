@@ -1,0 +1,42 @@
+.CurrentItems-Description {
+    font-size: 1.2rem;
+}
+
+.CurrentItems-Price {
+    font-size: 1.4rem;
+}
+
+.Confirm-Edit {
+    color: white !important;
+    background: var(--smu-blue-light);
+}
+
+.Cancel-Edit {
+    color: white !important;
+    background: var(--smu-red-light);
+}
+
+.Confirm-Edit:hover {
+    color: white !important;
+    background: var(--smu-blue-dark);
+}
+
+.Cancel-Edit:hover {
+    color: white !important;
+    background: var(--smu-red-dark);
+}
+
+input.Edit-Price {
+    color: white !important;
+}
+
+button > i {
+    color: var(--smu-blue);
+}
+button > i:hover {
+    color: #aaa;
+}
+
+.ItemDetails {
+    overflow-wrap: break-word;
+}

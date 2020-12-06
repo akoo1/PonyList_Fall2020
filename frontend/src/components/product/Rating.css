@@ -1,0 +1,41 @@
+
+.stars-box {
+  /* To vertically center the stars in the box */
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+
+  font-size: 1.5rem;
+}
+.stars-box-sm {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  margin-left: 1.3rem;
+}
+.stars-box-sellerInfo {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 4rem;
+}
+
+.stars {
+  font-style: normal;
+  color: rgb(227, 193, 0);
+}
+
+.stars i {
+  font-style: normal;
+}
+
+.full-star:after {
+  content: "\2605";
+}
+
+.empty-star:after {
+  content: "\2606";
+}
+
+
+

@@ -1,0 +1,50 @@
+:root {
+    --smu-red-light: #ff094b;
+    --smu-red: #cc0035;
+    --smu-red-dark: #790222;
+    --smu-blue-light: #4968d6;
+    --smu-blue: #354ca1;
+    --smu-blue-dark: #212e61;
+    --smu-blue-home: rgb(75, 104, 201);
+    --smu-white: white;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.bg-smu-red {
+    background: var(--smu-red);
+}
+
+.bg-smu-blue {
+    background: var(--smu-blue);
+}
+
+.bg-smu-blue-home {
+    background: var(--smu-blue-home);
+}
+
+.text-smu-red {
+    color: var(--smu-red);
+}
+
+.text-smu-blue {
+    color: var(--smu-blue);
+}
+
+.text-smu-white {
+    color: var(--smu-white);
+}
+
+.small {
+    font-size: 1.2rem;
+}
+
+body {
+    margin: 0;
+}
+
+.cover {
+    object-fit: cover;
+}

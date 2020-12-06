@@ -1,0 +1,185 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.master-container {
+  display: grid;
+  grid-template: 'banner banner banner banner'
+                 ' side  search search search'
+                 ' side  prods  prods  prods '
+                 ' side  prods  prods  prods '
+                 ' side  prods  prods  prods ';
+
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto 92px auto auto auto;
+}
+
+.products-container {
+  grid-area: prods;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.product-box {
+  width: 250px;
+  height: 250px;
+
+  background-color: #e9ecef;
+  border: 1px solid lightgrey;
+  border-radius: 5%;
+  margin: 1rem;
+}
+@media (max-width: 550px) {
+  .product-box {
+    width: 240px;
+  }
+}
+.product-box:hover {
+  transform: scale(1.05);
+  background-color: #e1e3e4;
+}
+
+.product-name {
+  font-size: 1rem;
+  text-decoration: none !important;
+  color: black;
+  margin: 0.5rem;
+}
+/* This will break a long string (no whitespace) and wrap it to the next line. */
+.productDetails-text {
+  word-wrap: break-word;
+}
+.lower-half-product-box {
+  display: flex;
+}
+.lower-half-product-box img {
+  border-radius: 5%;
+  width: 100px;
+  height: 100px;
+  margin: 0 0.8rem;
+}
+@media (max-width: 550px) {
+  .lower-half-product-box img {
+    margin: 0 0.3rem;
+  }
+}
+
+
+.banner-container {
+  grid-area: banner;
+  background-image: url("../img/PonyListBanner.png");
+  background-color: rgb(75, 104, 201);
+  max-width: 100%;
+  height: 300px;
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  margin-bottom: 1.5rem;
+  border-radius: .3rem;
+}
+.banner-logo-box--home {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  
+}
+.account-logo {
+  color: white;
+  font-size: 1.4rem;
+}
+.message-logo {
+  color: white;
+  font-size: 1.4rem;
+  /* To remove the underline on hover */
+  text-decoration: none !important;   
+  margin-left: 2rem;
+}
+.account-logo:hover,
+.message-logo:hover {
+  transform: scale(1.1
+  );
+  color: #e1e3e4;
+}
+
+
+
+.side-nav-bar-container {
+  grid-area: side;
+  background-color: rgb(75, 104, 201);
+  color: white;
+  border-radius: .3rem;
+  padding: 2rem 1rem;
+}
+@media (max-width: 550px) {
+  .side-nav-bar-container {
+    padding: 0.5rem;
+  }
+}
+.side-nav-bar-img-box {
+  text-align: center;
+}
+.logo-separator {
+  border: 0.5px solid rgb(223, 218, 218, 0.3);
+  border-radius: 10%;
+  margin: 2rem 0;
+}
+
+
+.price-range-input-box {
+  display: flex;
+  width: 180px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.price-range-input-min,
+.price-range-input-max {
+  width: 70px;
+}
+.price-range-input-max {
+  margin: 0 0.5rem;
+}
+.side-nav-bar-btn-box {
+  display: flex;
+  margin-top: 3rem;
+}
+
+
+
+
+.search-bar-container {
+  grid-area: search;
+}
+.search-bar-container-inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+.input-group {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  max-width: 518px;
+}
+.search-bars-box {
+  width: 80%;
+  margin-right: auto;
+}
+.Home-SellItem {
+  margin-left: 2rem;
+}
+
+
+.fa-search {
+  color: white;
+}
+.noMatchAlert {
+  margin-top: 1rem; 
+  margin-left: 1rem;
+  margin-bottom: 0;
+  /* padding-bottom: 1rem 0; */
+  max-width: 600px;
+}
