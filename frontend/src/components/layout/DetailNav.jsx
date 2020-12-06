@@ -23,7 +23,7 @@ const DetailNav = () => {
                 >
                     <i className='fas fa-user'></i>
                 </Link>
-                <Link className='message-logo' to='/chat' id="changeMargins">
+                <Link className='message-logo' to='/chat'>
                     <i className='fas fa-comments'></i>
                 </Link>
                 <Link to="/home"

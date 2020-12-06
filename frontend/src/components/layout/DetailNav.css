@@ -1,11 +1,12 @@
 .top-nav-bar {
-    background-color: rgb(75, 104, 201);
-    color: white;
-    padding: 1rem 0.5rem;
-    margin-bottom: 5rem;
-    border-radius: 0.3rem;
+  display: flex;
+  background-color: rgb(75, 104, 201);
+  color: white;
+  padding: 1rem 0.5rem;
+  margin-bottom: 5rem;
+  border-radius: 0.3rem;
 
-    display: flex;
+  min-width: 300px;
 }
 .ponyListLogo-box {
     margin-left: 1rem;
@@ -16,35 +17,35 @@
     width: 100%;
 }
 .user-logo,
+.message-logo,
 .home-logo {
     color: white;
     font-size: 1.4rem;
     margin-right: 2rem;
 }
-.logout-btn {
+.logout-btn,
+.sell-items-btn {
     color: white;
     text-decoration: none !important;
-    margin-right: 2rem;
+    margin-right: 1.5rem;
     margin-top: 0.3rem;
 }
 
 .user-logo:hover,
 .home-logo:hover,
-.logout-btn:hover {
+.message-logo:hover,
+.logout-btn:hover,
+.sell-items-btn:hover {
     transform: scale(1.1);
     color: #e1e3e4;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 630px) {
     .user-logo,
     .home-logo,
-    .logout-btn {
+    .message-logo,
+    .logout-btn,
+    .sell-items-btn {
         margin-right: 1rem;
     }
   }
-
-#changeMargins {
-    margin-left: -1rem;
-    margin-right: 1rem;
-}
-  

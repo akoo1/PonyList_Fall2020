@@ -21,7 +21,7 @@
   grid-area: prods;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 0.3rem;
   margin-left: 1rem;
 }
 
@@ -85,26 +85,7 @@
 .banner-logo-box--home {
   display: flex;
   justify-content: flex-end;
-  margin-top: 2rem;
-  margin-right: 2rem;
-  
-}
-.account-logo {
-  color: white;
-  font-size: 1.4rem;
-}
-.message-logo {
-  color: white;
-  font-size: 1.4rem;
-  /* To remove the underline on hover */
-  text-decoration: none !important;   
-  margin-left: 2rem;
-}
-.account-logo:hover,
-.message-logo:hover {
-  transform: scale(1.1
-  );
-  color: #e1e3e4;
+  margin-top: 1.5rem;
 }
 
 
@@ -155,31 +136,23 @@
 .search-bar-container {
   grid-area: search;
 }
-.search-bar-container-inner {
+
+.search-bars-box {
   display: flex;
   flex-wrap: wrap;
 }
 .input-group {
   margin-left: 2rem;
   margin-top: 0.5rem;
-  max-width: 518px;
+  max-width: 350px;
 }
-.search-bars-box {
-  width: 80%;
-  margin-right: auto;
-}
-.Home-SellItem {
-  margin-left: 2rem;
-}
-
-
 .fa-search {
   color: white;
 }
+
+
 .noMatchAlert {
-  margin-top: 1rem; 
-  margin-left: 1rem;
-  margin-bottom: 0;
-  /* padding-bottom: 1rem 0; */
+  margin-top: 0.5rem; 
+  margin-left: 1.5rem;
   max-width: 600px;
 }
