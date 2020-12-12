@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Home.css';
-import Rating from './product/Rating';
-import PonyListLogo from '../img/PonyList.PNG';
-import { ProductsRepository } from './api/ProductsRepository';
+import Rating from './Rating';
+import PonyListLogo from '../../img/PonyList.PNG';
+import { ProductsRepository } from '../api/ProductsRepository';
 import Alert from 'react-bootstrap/Alert';
 
 
@@ -190,6 +190,7 @@ export class Home extends React.Component {
 	}
 
 	render() {
+
 		if (this.state.products.length == 0 || this.state.users.length == 0) {
 			return <div>Loading Home...</div>;
 		}
@@ -202,19 +203,22 @@ export class Home extends React.Component {
 					<div className='banner-container'>
 						<div className='banner-logo-box--home'>
 							<Link
-								to={`/profile/${window.localStorage.getItem(
-									'id'
-								)}`}
+								to={`/profile/${window.localStorage.getItem('id')}`}
 								className='user-logo'
 							>
 								<i className='fas fa-user'></i>
 							</Link>
 
-							<Link className='message-logo' to='/chat'>
+							<Link
+								to='/chat'
+								className='message-logo'>
 								<i className='fas fa-comments'></i>
 							</Link>
-							<Link className="sell-items-btn">
-								Sell Items
+							<Link
+								to={`/sellItems/${window.localStorage.getItem('id')}`}
+								className="sell-items-btn"
+							>
+								Sell Item
 							</Link>
 							<a
 								className='logout-btn'
@@ -254,15 +258,11 @@ export class Home extends React.Component {
 									this.sortProducts(event.target.value);
 								}}
 							>
-								<option value='' selected disabled>
-									Choose...
-                                </option>
+								<option value='' selected disabled>Choose...</option>
 								<option value='priceLH'>Price: Low-High</option>
 								<option value='priceHL'>Price: High-Low</option>
 								<option value='date'>Newest Posts</option>
-								<option value='sellerRating'>
-									Seller Rating
-                                </option>
+								<option value='sellerRating'>Seller Rating</option>
 							</select>
 						</div>
 
@@ -281,9 +281,7 @@ export class Home extends React.Component {
 									})
 								}
 							>
-								<option value='' selected disabled>
-									Choose...
-                                </option>
+								<option value='' selected disabled>Choose...</option>
 								<option value='onCampus'>On-campus</option>
 								<option value='offCampus'>Off-campus</option>
 							</select>
@@ -430,30 +428,30 @@ export class Home extends React.Component {
 							</div>
 
 						</div>
-						
+
 						{/* React Bootstrap alert */}
-						{/* <Alert
-									variant='primary'
-									show={this.state.alertShow}
-									onClose={() =>
-											this.setState({ alertShow: false })
-									}
-									dismissible
-									className='noMatchAlert'
-							>
-									<Alert.Heading>No match found.</Alert.Heading>
-									<p>Please try a different search.</p>
-								</Alert> */}
+						<Alert
+							variant='primary'
+							show={this.state.alertShow}
+							onClose={() =>
+								this.setState({ alertShow: false })
+							}
+							dismissible
+							className='noMatchAlert'
+						>
+							<Alert.Heading>No match found.</Alert.Heading>
+							<p>Please try a different search.</p>
+						</Alert>
 
 						{/* Regular Bootstrap alert */}
-						<div class={`alert alert-warning alert-dismissible fade ${this.state.alertShow} noMatchAlert`} role="alert">
+						{/* <div class={`alert alert-warning alert-dismissible fade ${this.state.alertShow} noMatchAlert`} role="alert">
 							<strong>Holy guacamole!</strong> Please try a different search.
-							<button type="button" 
-											className="close"
-											onClick={ () => this.setState({ alertShow: '' }) }>
+							<button type="button"
+								className="close"
+								onClick={() => this.setState({ alertShow: '' })}>
 								<span aria-hidden="true">&times;</span>
 							</button>
-						</div>
+						</div> */}
 
 					</div>
 
@@ -550,11 +548,12 @@ export class Home extends React.Component {
 		//         console.log(error);
 		//     });
 
-		this.productsRepository.getProducts().then(products =>
-			this.setState({
-				products: products.filter(product => product.IsSold !== 1),
-			})
-		);
+		this.productsRepository.getProducts()
+			.then(products => 
+				this.setState({
+					products: products.filter(product => product.IsSold !== 1),
+				})
+			);
 		this.productsRepository
 			.getUsers()
 			.then(users => this.setState({ users }));

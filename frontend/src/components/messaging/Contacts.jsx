@@ -3,7 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../api_url';
 import DetailNav from '../layout/DetailNav';
+
 export const Contacts = props => {
+    
     Array.prototype.swap = function (x, y) {
         if (this[x] > this[y]) {
             let b = this[x];
