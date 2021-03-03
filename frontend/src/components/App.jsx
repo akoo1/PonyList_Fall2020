@@ -23,57 +23,55 @@ const getLogged = () => {
 function App() {
 	return (
 		<>
-			<div>
-				<Router>
-					{/* {window.localStorage.getItem('id') === null && <Redirect to='/' />} */}
-					<Switch>
-						<Route
-							path='/'
-							exact
-							component={Landing}
-						/>
-						<Redirect from="/x_profile/:id" to='/profile/:id' />
-						<Route
-							path='/profile/:id'
-							exact
-							component={ProfilePage}
-						/>
-						<Route
-							path='/login'
-							exact
-							component={Login}
-						/>
-						<Route
-							path='/home'
-							exact
-							component={Home}
-						/>
-						<Route
-							path='/products/:productId'
-							exact
-							component={ProductDetails}
-						/>
-						<Route
-							path='/favorites/:itemId'
-							exact
-							component={Favorites}
-						/>
-						<Route
-							path='/sellItems/:userId'
-							exact
-							component={SellItem}
-						/>
-						<Route
-							path='/chat'
-							exact
-							component={Chat}
-						/>
-						<Route
-							component={Error}
-						/>
-					</Switch>
-				</Router>
-			</div>
+			<Router>
+				{/* {window.localStorage.getItem('id') === null && <Redirect to='/' />} */}
+				<Switch>
+					<Route
+						path='/'
+						exact
+						component={Landing}
+					/>
+					<Redirect from="/x_profile/:id" to='/profile/:id' />
+					<Route
+						path='/profile/:id'
+						exact
+						component={ProfilePage}
+					/>
+					<Route
+						path='/login'
+						exact
+						component={Login}
+					/>
+					<Route
+						path='/home'
+						exact
+						component={Home}
+					/>
+					<Route
+						path='/products/:productId'
+						exact
+						component={ProductDetails}
+					/>
+					<Route
+						path='/favorites/:itemId'
+						exact
+						component={Favorites}
+					/>
+					<Route
+						path='/sellItems/:userId'
+						exact
+						component={SellItem}
+					/>
+					<Route
+						path='/chat'
+						exact
+						component={Chat}
+					/>
+					<Route
+						component={Error}
+					/>
+				</Switch>
+			</Router>
 		</>
 	);
 }
