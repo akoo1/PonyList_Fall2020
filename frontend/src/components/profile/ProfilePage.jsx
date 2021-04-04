@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DetailNav from '../layout/DetailNav';
-import Rating from '../product/Rating';
+import Rating from '../HomeItems/Rating';
 import PastItems from '../Items/PastItems';
 import { CurrentItems } from '../Items/CurrentItems';
-import { ProductsRepository } from '../api/ProductsRepository';
+import { ItemsRepository } from '../api/ItemsRepository';
 import './ProfilePage.css';
 import Axios from 'axios';
 import { API_URL } from '../../api_url';
@@ -30,7 +30,7 @@ export class ProfilePage extends React.Component {
         salesCount: null,
     };
 
-    productsRepository = new ProductsRepository();
+    ItemsRepository = new ItemsRepository();
 
     imageExists(image_url) {
         var http = new XMLHttpRequest();
@@ -379,22 +379,22 @@ export class ProfilePage extends React.Component {
     componentDidMount() {
         const userId = +this.props.match.params.id;
         if (userId) {
-            this.productsRepository
+            this.ItemsRepository
                 .getFavorites(userId)
                 .then(items => this.setState({ favoriteItems: items }));
-            this.productsRepository
+            this.ItemsRepository
                 .getUser(userId)
                 .then(user => this.setState({ user: user[0] }));
-            this.productsRepository
+            this.ItemsRepository
                 .getSellerReviews(userId)
                 .then(reviews => this.setState({ reviews: reviews }));
-            this.productsRepository
+            this.ItemsRepository
                 .getSellerRating(userId)
                 .then(rating => this.setState({ userRating: rating[0] }));
-            this.productsRepository
+            this.ItemsRepository
                 .getListingsCount(userId)
                 .then(count => this.setState({ listingCount: count }));
-            this.productsRepository
+            this.ItemsRepository
                 .getSoldItemsCount(userId)
                 .then(count => this.setState({ salesCount: count }));
         }

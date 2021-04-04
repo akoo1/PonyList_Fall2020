@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ProductsRepository } from '../api/ProductsRepository';
+import { ItemsRepository } from '../api/ItemsRepository';
 
 export class PastItems extends React.Component {
     state = {
@@ -9,10 +9,10 @@ export class PastItems extends React.Component {
         searchQuery: ''
     }
     
-    productsRepository = new ProductsRepository();
+    ItemsRepository = new ItemsRepository();
 
     searchItem(input) {
-        this.productsRepository.getSoldItems(this.props.id).then(pastItems => {
+        this.ItemsRepository.getSoldItems(this.props.id).then(pastItems => {
                 this.setState({ pastItems });
                 let filtered_products = this.state.pastItems.filter(item =>
                     item.ItemName.toLowerCase()
@@ -106,7 +106,7 @@ export class PastItems extends React.Component {
     }
 
     componentDidMount() {
-        this.productsRepository.getSoldItems(this.props.id)
+        this.ItemsRepository.getSoldItems(this.props.id)
             .then(products => this.setState({ pastItems: products }));
     }
 }

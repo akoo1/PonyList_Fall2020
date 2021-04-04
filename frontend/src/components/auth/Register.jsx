@@ -9,8 +9,11 @@ import UserOptions from './UserOptions';
 import axios from 'axios';
 import hash from 'js-sha256';
 import { API_URL } from '../../api_url';
+
 var sha256 = hash.sha256;
-export default function Register(props) {
+
+function Register(props) {
+
     // A little validation for the form.
     function getId() {
         const id = shortid.generate();
@@ -205,3 +208,5 @@ Username, Password, OnCampus, Dorm, IsStudent, Location
         </div>
     );
 }
+
+export default Register;

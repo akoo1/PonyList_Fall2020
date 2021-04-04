@@ -5,7 +5,7 @@ import Loader from '../layout/Loader';
 import './CurrentItems.css';
 import OkayAlert from '../layout/OkayAlert';
 import axios from 'axios';
-import { ProductsRepository } from '../api/ProductsRepository';
+import { ItemsRepository } from '../api/ItemsRepository';
 import { API_URL } from '../../api_url';
 
 export class CurrentItems extends React.Component {
@@ -25,7 +25,7 @@ export class CurrentItems extends React.Component {
         searchQuery: '',
     };
 
-    productsRepository = new ProductsRepository();
+    ItemsRepository = new ItemsRepository();
 
     handleCancelEdit() {
         this.setState({
@@ -46,7 +46,7 @@ export class CurrentItems extends React.Component {
     }
 
     handleConfirmEdit() {
-        this.productsRepository
+        this.ItemsRepository
             .editListing(
                 this.state.id,
                 this.state.updateItemName,
@@ -67,14 +67,14 @@ export class CurrentItems extends React.Component {
                     okayPopup: true,
                     okayMessage: 'Item Updated!',
                 });
-                this.productsRepository
+                this.ItemsRepository
                     .getListings(this.props.id)
                     .then(products => this.setState({ items: products }));
             });
     }
 
     handleSell(itemId) {
-        this.productsRepository.sellItem(itemId);
+        this.ItemsRepository.sellItem(itemId);
         axios
             .patch(`${API_URL}/addSale/${window.localStorage.getItem('id')}`)
             .then(res => {
@@ -87,7 +87,7 @@ export class CurrentItems extends React.Component {
                 });
             })
             .then(() => {
-                this.productsRepository
+                this.ItemsRepository
                     .getListings(this.props.id)
                     .then(products => this.setState({ items: products }));
             });
@@ -95,7 +95,7 @@ export class CurrentItems extends React.Component {
 
     handleEdit(itemId) {
         this.setState({ updateItemId: itemId });
-        this.productsRepository.getProduct(itemId).then(item =>
+        this.ItemsRepository.getProduct(itemId).then(item =>
             this.setState({
                 updateItemImage: item[0].ImageURL,
                 updateItemName: item[0].ItemName,
@@ -114,7 +114,7 @@ export class CurrentItems extends React.Component {
 
     deleteItem(confirmed) {
         if (confirmed && this.state.deletingItemId) {
-            this.productsRepository
+            this.ItemsRepository
                 .delete(this.state.deletingItemId)
                 .then(() => {
                     this.setState({
@@ -122,7 +122,7 @@ export class CurrentItems extends React.Component {
                         okayMessage: 'Item deleted!',
                         deletingItemId: null,
                     });
-                    this.productsRepository
+                    this.ItemsRepository
                         .getListings(this.props.id)
                         .then(products => this.setState({ items: products }));
                 });
@@ -134,7 +134,7 @@ export class CurrentItems extends React.Component {
     }
 
     searchItem(input) {
-        this.productsRepository.getListings(this.props.id).then(items => {
+        this.ItemsRepository.getListings(this.props.id).then(items => {
             this.setState({ items });
             let filtered_products = this.state.items.filter(item =>
                 item.ItemName.toLowerCase()
@@ -445,7 +445,7 @@ export class CurrentItems extends React.Component {
     }
 
     componentDidMount() {
-        this.productsRepository
+        this.ItemsRepository
             .getListings(this.props.id)
             .then(products =>
                 this.setState({ items: products, id: this.props.id })

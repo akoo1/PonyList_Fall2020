@@ -1,17 +1,16 @@
 import axios from 'axios';
 import { API_URL } from '../../api_url';
 
-export class ProductsRepository {
+export class ItemsRepository {
   url = `${API_URL}`;
 
   config = {};
 
   // GET methods
 
-  getProducts() {
+  getItems() {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/items`, this.config)
+      axios.get(`${this.url}/items`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -19,10 +18,9 @@ export class ProductsRepository {
         });
     });
   }
-  getProduct(itemId) {
+  getItem(itemId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/item/${itemId}`, this.config)
+      axios.get(`${this.url}/item/${itemId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -32,8 +30,7 @@ export class ProductsRepository {
   }
   getUser(userId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/user/${userId}`, this.config)
+      axios.get(`${this.url}/user/${userId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -43,8 +40,7 @@ export class ProductsRepository {
   }
   getUsers() {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/users`, this.config)
+      axios.get(`${this.url}/users`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -54,8 +50,7 @@ export class ProductsRepository {
   }
   getSellerReviews(sellerId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/reviews/${sellerId}`, this.config)
+      axios.get(`${this.url}/reviews/${sellerId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -65,8 +60,7 @@ export class ProductsRepository {
   }
   getSellerRating(sellerId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/userRating/${sellerId}`, this.config)
+      axios.get(`${this.url}/userRating/${sellerId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -76,8 +70,7 @@ export class ProductsRepository {
   }
   getImages(itemId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/images/${itemId}`, this.config)
+      axios.get(`${this.url}/images/${itemId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -87,8 +80,7 @@ export class ProductsRepository {
   }
   getListings(userId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/userItems/${userId}`, this.config)
+      axios.get(`${this.url}/userItems/${userId}`, this.config)
         .then(res => resolve(res.data.filter(item => item.IsSold != 1)))
         .catch(err => {
           alert(err);
@@ -98,8 +90,7 @@ export class ProductsRepository {
   }
   getSoldItems(userId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/userItems/${userId}`, this.config)
+      axios.get(`${this.url}/userItems/${userId}`, this.config)
         .then(res => resolve(res.data.filter(item => item.IsSold == 1)))
         .catch(err => {
           alert(err);
@@ -109,8 +100,7 @@ export class ProductsRepository {
   }
   getListingsCount(userId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/userItems/${userId}`, this.config)
+      axios.get(`${this.url}/userItems/${userId}`, this.config)
         .then(res =>
           resolve(res.data.filter(item => item.IsSold != 1).length)
         )
@@ -122,8 +112,7 @@ export class ProductsRepository {
   }
   getSoldItemsCount(userId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/userItems/${userId}`, this.config)
+      axios.get(`${this.url}/userItems/${userId}`, this.config)
         .then(res =>
           resolve(res.data.filter(item => item.IsSold == 1).length)
         )
@@ -135,8 +124,7 @@ export class ProductsRepository {
   }
   getFavorites(userId) {
     return new Promise((resolve, reject) => {
-      axios
-        .get(`${this.url}/favorites/${userId}`, this.config)
+      axios.get(`${this.url}/favorites/${userId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -149,8 +137,7 @@ export class ProductsRepository {
 
   addReview(review) {
     return new Promise((resolve, reject) => {
-      axios
-        .post(`${this.url}/addReview`, review, this.config)
+      axios.post(`${this.url}/addReview`, review, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -160,8 +147,7 @@ export class ProductsRepository {
   }
   addFavoriteItem(item) {
     return new Promise((resolve, reject) => {
-      axios
-        .post(`${this.url}/addFavorite`, item, this.config)
+      axios.post(`${this.url}/addFavorite`, item, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
@@ -180,8 +166,7 @@ export class ProductsRepository {
     updateItemId
   ) {
     return new Promise((resolve, reject) => {
-      axios
-        .put(
+      axios.put(
           `${this.url}/updateItem`,
           {
             SellerID: sellerId,
@@ -204,8 +189,7 @@ export class ProductsRepository {
 
   delete(itemId) {
     return new Promise((resolve, reject) => {
-      axios
-        .delete(`${this.url}/deleteItem/${itemId}`, this.config)
+      axios.delete(`${this.url}/deleteItem/${itemId}`, this.config)
         .then(res => resolve(res.data))
         .catch(err => {
           alert(err);
