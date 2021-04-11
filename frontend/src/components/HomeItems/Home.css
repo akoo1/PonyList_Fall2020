@@ -1,30 +1,48 @@
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* 
+ The layout of the Home page is displayed using CSS Grid.
+ Each grid area is displayed using Flexbox.    
+*/
 
 .master-container {
   display: grid;
   grid-template: 'banner banner banner banner'
                  ' side  search search search'
-                 ' side  prods  prods  prods '
-                 ' side  prods  prods  prods '
-                 ' side  prods  prods  prods ';
+                 ' side  items  items  items '
+                 ' side  items  items  items '
+                 ' side  items  items  items ';
 
-  grid-template-columns: 225px auto auto auto;
+  grid-template-columns: minmax(225px, 250px) auto auto auto;
   grid-template-rows: auto auto auto auto auto;
 }
 
-.items-container {
-  grid-area: prods;
+
+.banner-container {
+  grid-area: banner;
+  background-image: url("../../img/PonyListBanner.png");
+  background-color: rgb(75, 104, 201);
+  max-width: 100%;
+  height: 300px;
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  margin-bottom: 1.5rem;
+  border-radius: .3rem;
+}
+.banner-logo-box--home {
   display: flex;
-  flex-wrap: wrap;
-  /* margin-top: 1rem; */
-  margin-left: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
 }
 
+
+
+.items-container {
+  grid-area: items;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1rem;
+}
 .item-box {
   width: 250px;
   height: 250px;
@@ -69,24 +87,6 @@
 }
 
 
-.banner-container {
-  grid-area: banner;
-  background-image: url("../../img/PonyListBanner.png");
-  background-color: rgb(75, 104, 201);
-  max-width: 100%;
-  height: 300px;
-  background-position: center;
-  background-size: 60%;
-  background-repeat: no-repeat;
-  margin-bottom: 1.5rem;
-  border-radius: .3rem;
-}
-.banner-logo-box--home {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-}
-
 
 
 .side-nav-bar-container {
@@ -95,11 +95,7 @@
   color: white;
   border-radius: .3rem;
   padding: 2rem 1rem;
-}
-@media (max-width: 550px) {
-  .side-nav-bar-container {
-    padding: 0.5rem;
-  }
+  margin-right: 1rem;
 }
 .side-nav-bar-img-box {
   text-align: center;
@@ -109,8 +105,6 @@
   border-radius: 10%;
   margin: 2rem 0;
 }
-
-
 .price-range-input-box {
   display: flex;
   width: 180px;
@@ -130,13 +124,9 @@
 }
 
 
-
-
 .search-bar-container {
   grid-area: search;
-
 }
-
 .search-bars-box {
   display: flex;
   flex-wrap: wrap;

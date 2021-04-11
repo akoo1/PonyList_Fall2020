@@ -49,7 +49,7 @@ class ItemDetails extends Component {
 				this.setState({ sellerReviews: reviews });
 				alert('User review added!');
 			});
-		window.location.reload(); // this can be changed here... just temporary unless we run out of time.
+		// window.location.reload(); // this can be changed here... just temporary unless we run out of time.
 	};
 
 	myAddFavoriteItem() {

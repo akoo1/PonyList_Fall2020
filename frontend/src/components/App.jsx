@@ -20,7 +20,7 @@ import Favorites from './Items/Favorites';
 // - Alert Message for searching
 // - Auto-suggestion for searching
 // - Pagination  
-// - Socket.io
+// - use only functional components
 
 const getLogged = () => {
 	let id = window.localStorage.getItem('id');
