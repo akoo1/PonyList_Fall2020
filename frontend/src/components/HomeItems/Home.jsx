@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
-import { ItemsRepository } from '../api/ItemsRepository';
+
 import './Home.css';
 import Rating from './Rating';
 import PonyListLogo from '../../img/PonyList.PNG';
@@ -13,7 +13,7 @@ import Loader from '../layout/Loader';
 const Home = () => {
 
 	const [items, setItems] = useState([])
-	// Alert message is two-way bound with this state, so that changing the search input won't change the alert
+	// Alert message is two-way bound with userQuery state, so that changing the search input won't change the alert message.
 	const [userQuery, setUserQuery] = useState('')
 	// For searching 
 	const [searchItemName, setSearchItemName] = useState('')
@@ -31,12 +31,16 @@ const Home = () => {
 
 	const url = API_URL
 
-	// Fetch data on page loaded
+	// componentDidMount()
 	useEffect(() => {
 
 		axios.get(`${url}/items`)
-			.then(res => setItems(res.data))
+			.then(res => {
+				let items = res.data
+				setItems(items)
+			})
 
+		console.log(items)
 	}, [])
 
 

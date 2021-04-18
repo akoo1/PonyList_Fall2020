@@ -10,7 +10,7 @@ import { API_URL } from '../../api_url';
 import { distance } from './Distance_Util';
 var sha256 = hash.sha256;
 
-export default function Login(props) {
+const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
@@ -111,3 +111,6 @@ export default function Login(props) {
         </div>
     );
 }
+
+
+export default Login;

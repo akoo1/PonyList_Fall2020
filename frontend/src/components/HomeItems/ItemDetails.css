@@ -7,12 +7,11 @@
 .item-img-box {
   margin: 1rem;
   margin-right: 2rem;
-  
+  width: 500px;
+  height: 450px;
 }
 .item-img-box img {
-  width: 500px;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   border-radius: 3%;
 }
 .itemDetails-name {

@@ -122,7 +122,7 @@ app.post('/registerUser', (req, res) => {
 
 app.post('/loginUser', (req, res) => {
 	connection.query(
-		'SELECT EXISTS(SELECT * FROM Users WHERE Username = ? AND Password = ?), (SELECT UserID AS result FROM Users WHERE Username = ? AND Password = ?) AS result',
+		'SELECT EXISTS (SELECT * FROM Users WHERE Username = ? AND Password = ?), (SELECT UserID AS result FROM Users WHERE Username = ? AND Password = ?) AS result',
 		[
 			req.body.Username,
 			req.body.Password,
@@ -542,6 +542,7 @@ app.put('/updateItem', async (req, res) => {
 			res.end(JSON.stringify(result));
 		}
 	);
+});
 });
 
 app.patch('/updateIsSold/:ItemID', async (req, res) => {
