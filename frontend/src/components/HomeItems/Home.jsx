@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
+import Autosuggest from 'react-autosuggest';
 
 import './Home.css';
 import Rating from './Rating';
@@ -15,6 +16,8 @@ const Home = () => {
 	const [items, setItems] = useState([])
 	// Alert message is two-way bound with userQuery state, so that changing the search input won't change the alert message.
 	const [userQuery, setUserQuery] = useState('')
+	// For auto suggestion 
+	const [suggestions, setSuggestions] = useState([])
 	// For searching 
 	const [searchItemName, setSearchItemName] = useState('')
 	const [searchSellerName, setSearchSellerName] = useState('')
@@ -29,12 +32,11 @@ const Home = () => {
 	const [priceMax, setPriceMax] = useState('')
 
 
-	const url = API_URL
 
 	// componentDidMount()
 	useEffect(() => {
 
-		axios.get(`${url}/items`)
+		axios.get(`${API_URL}/items`)
 			.then(res => {
 				let items = res.data
 				setItems(items)
@@ -45,10 +47,78 @@ const Home = () => {
 
 
 
-	const userSearch = (userQuery, searchType) => {
+	// A set of functions for auto-suggest
+	const getSuggestions = (value) => {
+		const inputValue = value.trim().toLowerCase()
+		const inputLength = inputValue.length
 
+		return inputLength === 0 ? [] : items.filter(item =>
+			item.ItemName.toLowerCase().slice(0, inputLength) === inputValue
+		)
+	}
+
+	const getSuggestionValue = (suggestion) => suggestion.ItemName;
+
+	const renderSuggestion = (suggestion) => (
+		<div>
+			{suggestion.ItemName}
+		</div>
+	)
+
+	const onInputChange = (event, { newValue }) => {
+		setUserQuery(newValue)
+	}
+
+	const onSuggestionsFetchRequested = ({ value }) => {
+		setSuggestions(getSuggestions(value))
+	}
+
+	const onSuggestionsClearRequested = () => {
+		setSuggestions([])
+	}
+
+	const inputProps = {
+		placeholder: 'Enter an item...',
+		value: userQuery,
+		onChange: onInputChange
+	}
+
+	const theme = {
+		input: {
+			display: 'block',
+			// width: '100%',
+			width: '320px',
+			marginTop: '0.5rem',
+			marginLeft: '2rem',
+			height: '2.5rem',
+			padding: '.375rem .75rem',
+			color: '#495057',
+			backgroundClip: 'padding-box',
+			border: '1px solid #ced4da',
+			borderRadius: '.25rem',
+			transition: 'border-color .15s ease -in -out, box - shadow .15s ease -in -out'
+		},
+		suggestionsList: {
+			listStyle: 'none',
+			marginTop: '0.5rem',
+			marginLeft: '2rem',
+			paddingTop: '0.5rem',
+			paddingLeft: '0.75rem',
+			border: '1px solid #ced4da',
+			borderRadius: '.25rem',
+		},
+		suggestion: {
+			cursor: 'pointer'
+		}
+	}
+
+
+
+
+
+	const userSearch = (userQuery, searchType) => {
 		// Fetch items on every search, this resets the items
-		axios.get(`${url}/items`)
+		axios.get(`${API_URL}/items`)
 			.then(res => {
 				let fetchedItems = res.data
 				let itemProperty = ''
@@ -93,7 +163,7 @@ const Home = () => {
 	// SIDE BAR
 
 	const startOver = () => {
-		axios.get(`${url}/items`)
+		axios.get(`${API_URL}/items`)
 			.then(res => setItems(res.data))
 		// Clear input fields
 		setSearchItemName('')
@@ -106,6 +176,7 @@ const Home = () => {
 
 		window.location.reload();  // Can't figure out how to reset the radio btn without reloading
 	}
+
 
 	const sortItems = (sortMethod) => {
 
@@ -137,9 +208,10 @@ const Home = () => {
 		setItems(copyItems)
 	}
 
+
 	const filterItems = () => {
 		// This resets the items on every new filter
-		axios.get(`${url}/items`)
+		axios.get(`${API_URL}/items`)
 			.then(res => {
 
 				let fetchedItems = res.data
@@ -381,7 +453,25 @@ const Home = () => {
 			<div className='search-bar-container'>
 
 				<div className='search-bars-box'>
-					<div className='input-group'>
+
+					<Autosuggest
+						suggestions={suggestions}
+						onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+						onSuggestionsClearRequested={onSuggestionsClearRequested}
+						getSuggestionValue={getSuggestionValue}
+						renderSuggestion={renderSuggestion}
+						inputProps={inputProps}
+						theme={theme}
+					/>
+					<button
+						className='btn btn-primary btn-search-item'
+						type='button'
+						onClick={() => userSearch(searchItemName, 'item')}
+					>
+						<i className='fas fa-search'></i>
+					</button>
+
+					{/* <div className='input-group'>
 						<input
 							type='text'
 							className='search-bar-input form-control'
@@ -398,7 +488,7 @@ const Home = () => {
 								<i className='fas fa-search'></i>
 							</button>
 						</div>
-					</div>
+					</div> */}
 					<div className='input-group'>
 						<input
 							className='search-bar-input form-control'

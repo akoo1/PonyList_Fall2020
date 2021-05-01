@@ -16,17 +16,14 @@ import ProfilePage from './profile/ProfilePage';
 import Favorites from './Items/Favorites';
 
 // Things I can add to make this app better 
-// - Loader
-// - Alert Message for searching
-// - Auto-suggestion for searching
+// - Loader (Done)
+// - Alert Messages for searching (Done)
+// - Auto-suggestion for searching items (Done)
 // - Pagination  
-// - use only functional components
+// - Use only functional components (Done`)
+// - Use TypeScript
 
-const getLogged = () => {
-	let id = window.localStorage.getItem('id');
-	console.log(id);
-	return id;
-}
+
 
 const App = () => {
 

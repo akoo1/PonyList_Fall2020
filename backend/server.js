@@ -543,7 +543,6 @@ app.put('/updateItem', async (req, res) => {
 		}
 	);
 });
-});
 
 app.patch('/updateIsSold/:ItemID', async (req, res) => {
 	connection.query(

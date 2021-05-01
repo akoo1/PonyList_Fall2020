@@ -137,6 +137,14 @@
   margin-top: 0.5rem;
   max-width: 350px;
 }
+.input-group-append {
+  height: 40px;
+}
+.btn-search-item {
+  height: 40px;
+  margin-top: 0.5rem;
+}
+
 .fa-search {
   color: white;
 }
@@ -153,3 +161,4 @@
 .searchResultAlert span {
   font-weight: bold;
 }
+
