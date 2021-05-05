@@ -299,12 +299,11 @@ const Home = () => {
 
 
 
+
+
+
 	if (items.length === 0) {
 		return <Loader />
-	}
-
-	if (window.localStorage.getItem('id') === null) {
-		return <Redirect to='/' />
 	}
 
 	return (
@@ -364,7 +363,7 @@ const Home = () => {
 							sortItems(event.target.value)
 						}}
 					>
-						<option value='' selected disabled>Choose...</option>
+						<option value='' disabled>Choose...</option>
 						<option value='priceLH'>Price: Low-High</option>
 						<option value='priceHL'>Price: High-Low</option>
 						<option value='date'>Newest Posts</option>

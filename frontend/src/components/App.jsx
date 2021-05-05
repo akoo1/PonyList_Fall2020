@@ -23,6 +23,7 @@ import Favorites from './Items/Favorites';
 // - Use only functional components (Done`)
 // - Use TypeScript
 
+// akoo, abc123
 
 
 const App = () => {
