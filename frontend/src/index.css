@@ -5,10 +5,7 @@
 	box-sizing: border-box;
 }
 
-/* 
- The :root selector matches the document's root element. In HTML, the root element is always the html element.
- Thus, all css variables are global scope.
- */
+/* :root has the same scope as element selector with html - global scope, but higher priority. */
 :root {
 	--smu-red-light: #ff094b;
 	--smu-red: #cc0035;
