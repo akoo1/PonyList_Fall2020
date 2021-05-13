@@ -69,6 +69,8 @@ io.on('connection', socket => {
 const logger = log({ console: true, file: false, label: config.name });
 
 app.use(bodyParser.json());
+
+// This allows HTTP requests from any source (url) to be able to read the response sent back from the server  
 app.use(
 	cors({
 		origin: '*',
