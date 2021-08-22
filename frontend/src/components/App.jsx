@@ -15,15 +15,15 @@ import SellItem from './Items/SellItem';
 import ProfilePage from './profile/ProfilePage';
 import Favorites from './Items/Favorites';
 
-// Things I can add to make this app better 
-// - Loader (Done)
-// - Alert Messages for searching (Done)
-// - Auto-suggestion for searching items (Done)
-// - Pagination  
-// - Use only functional components (Done`)
+// Things I can add to make this app better
+// - (Done) Use only functional components
+// - (Done) Loader
+// - (Done) Alert Messages for filtering for items and sellers
+// - (Done) Auto-suggestion for filtering for items
+// - Pagination
 // - Use TypeScript
 
-// akoo, abc123
+// Login credential: akoo, abc123
 
 
 const App = () => {

@@ -8,6 +8,7 @@ import UserCredentials from './UserCredentials';
 import { Redirect, useHistory } from 'react-router-dom';
 import { API_URL } from '../../api_url';
 import { distance } from './Distance_Util';
+
 var sha256 = hash.sha256;
 
 const Login = (props) => {

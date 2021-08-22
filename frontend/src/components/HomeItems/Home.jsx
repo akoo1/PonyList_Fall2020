@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
 import Autosuggest from 'react-autosuggest';
@@ -14,18 +14,18 @@ import Loader from '../layout/Loader';
 const Home = () => {
 
 	const [items, setItems] = useState([])
-	// Alert message is two-way bound with userQuery state, so that changing the search input won't change the alert message.
+	// Alert message event is two-way bound with userQuery state, so that changing the search input won't change the alert message.
 	const [userQuery, setUserQuery] = useState('')
 	// For auto suggestion 
 	const [suggestions, setSuggestions] = useState([])
-	// For searching 
+	// For main filtering 
 	const [searchItemName, setSearchItemName] = useState('')
 	const [searchSellerName, setSearchSellerName] = useState('')
 	const [alertShow, setAlertShow] = useState(false)
 	const [alertType, setAlertType] = useState('')
 	// For sorting 
 	const [sortMethod, setSortMethod] = useState('')
-	// For filtering 
+	// For sub filtering 
 	const [location, setLocation] = useState('')
 	const [condition, setCondition] = useState('')
 	const [priceMin, setPriceMin] = useState('')
@@ -112,9 +112,9 @@ const Home = () => {
 		}
 	}
 
+	// ********************************************************************************
 
-
-
+	
 
 	const userSearch = (userQuery, searchType) => {
 		// Fetch items on every search, this resets the items
@@ -328,14 +328,14 @@ const Home = () => {
 						className="sell-items-btn"
 					>
 						Sell Item
-							</Link>
+					</Link>
 					<a
 						className='logout-btn'
 						href='/'
 						onClick={() => window.localStorage.removeItem('id')}
 					>
 						Logout
-              </a>
+          </a>
 				</div>
 			</div>
 
@@ -453,7 +453,9 @@ const Home = () => {
 
 				<div className='search-bars-box'>
 
-					<Autosuggest
+					{/* Using the third party Autosuggestion component will not allow me to use my own filter search bar, thus 
+							losing that feature. */}
+					{/* <Autosuggest
 						suggestions={suggestions}
 						onSuggestionsFetchRequested={onSuggestionsFetchRequested}
 						onSuggestionsClearRequested={onSuggestionsClearRequested}
@@ -468,9 +470,9 @@ const Home = () => {
 						onClick={() => userSearch(searchItemName, 'item')}
 					>
 						<i className='fas fa-search'></i>
-					</button>
+					</button> */}
 
-					{/* <div className='input-group'>
+					<div className='input-group'>
 						<input
 							type='text'
 							className='search-bar-input form-control'
@@ -487,7 +489,7 @@ const Home = () => {
 								<i className='fas fa-search'></i>
 							</button>
 						</div>
-					</div> */}
+					</div>
 					<div className='input-group'>
 						<input
 							className='search-bar-input form-control'
